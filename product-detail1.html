@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hydrating Serum - Product Details</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Luxe Beauty Logo">
+      <span>Luxe Beauty</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+  </div>
+
+  <!-- Product Details Section -->
+  <div id="product-details">
+    <h2 id="product-name"></h2>
+    <img id="product-img" src="" alt="Product Image" />
+    <p id="product-price"></p>
+    <p id="product-description"></p>
+    <a href="products.html" class="btn-back">Volver</a>
+    <a href="#" id="next-product-link" class="btn-next">Siguiente Producto</a>
+  </div>
+
+  <!-- Suggested Products Section -->
+  <section id="suggested-products">
+    <h3>You may also like</h3>
+    <div class="product-grid">
+      <!-- Suggested Products (same category as Hydrating Serum) -->
+      <div class="product-card">
+        <img src="images/product2.jpg" alt="Product 2">
+        <h4>Soothing Cream</h4>
+        <p>Price: $18.00</p>
+        <p>Category: Skincare</p>
+        <a href="product-detail2.html?product=Soothing%20Cream">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="images/product3.jpg" alt="Product 3">
+        <h4>Moisturizing Lotion</h4>
+        <p>Price: $25.00</p>
+        <p>Category: Skincare</p>
+        <a href="product-detail3.html?product=Moisturizing%20Lotion">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="images/product4.jpg" alt="Product 4">
+        <h4>Anti-Aging Cream</h4>
+        <p>Price: $30.00</p>
+        <p>Category: Skincare</p>
+        <a href="product-detail4.html?product=Anti-Aging%20Cream">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Definir los productos
+    const products = {
+      "Hydrating Serum": {
+        name: "Hydrating Serum",
+        imgSrc: "images/product1.jpg",
+        price: "$20.00",
+        description: "A serum that provides deep hydration for your skin."
+      },
+      "Soothing Cream": {
+        name: "Soothing Cream",
+        imgSrc: "images/product2.jpg",
+        price: "$18.00",
+        description: "A calming cream for irritated skin."
+      },
+      "Moisturizing Lotion": {
+        name: "Moisturizing Lotion",
+        imgSrc: "images/product3.jpg",
+        price: "$25.00",
+        description: "A nourishing lotion to keep your skin moisturized all day."
+      },
+      "Anti-Aging Cream": {
+        name: "Anti-Aging Cream",
+        imgSrc: "images/product4.jpg",
+        price: "$30.00",
+        description: "A cream designed to reduce fine lines and wrinkles."
+      }
+    };
+
+    // Obtener el nombre del producto de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get("product") || "Hydrating Serum";  // Establecer el producto a mostrar
+
+    // Verificar si el producto existe en el objeto 'products'
+    if (products[productName]) {
+      document.getElementById("product-name").textContent = products[productName].name;
+      document.getElementById("product-img").src = products[productName].imgSrc;
+      document.getElementById("product-price").textContent = "Price: " + products[productName].price;
+      document.getElementById("product-description").textContent = products[productName].description;
+
+      // Configurar el siguiente producto
+      const nextProduct = getNextProduct(productName);
+      if (nextProduct) {
+        document.getElementById("next-product-link").href = `product-detail${nextProduct}.html?product=${nextProduct}`;
+      } else {
+        document.getElementById("next-product-link").style.display = "none";  // Ocultar si no hay siguiente producto
+      }
+    } else {
+      document.getElementById("product-name").textContent = "Product Not Found";
+      document.getElementById("product-price").textContent = "";
+      document.getElementById("product-description").textContent = "Sorry, the product you're looking for does not exist.";
+    }
+
+    // Función para obtener el siguiente producto en la secuencia
+    function getNextProduct(currentProduct) {
+      const productList = ["Hydrating Serum", "Soothing Cream", "Moisturizing Lotion", "Anti-Aging Cream"];
+      const currentIndex = productList.indexOf(currentProduct);
+      if (currentIndex === -1 || currentIndex === productList.length - 1) {
+        return null; // No hay siguiente producto
+      }
+      return productList[currentIndex + 1];  // Devuelve el siguiente producto en la lista
+    }
+  </script>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2024 Luxe Beauty. All rights reserved.</p>
+  </div>
+
+</body>
+</html>

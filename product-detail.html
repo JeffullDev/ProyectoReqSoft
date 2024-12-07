@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail - Luxe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Luxe Logo">
+      Luxe
+    </div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="terms.html">Terms & Conditions</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+    <div class="theme-switcher" id="theme-switcher">🌙</div>
+  </nav>
+
+  <section id="product-detail" class="product-detail">
+    <h2 id="product-name">Product Name</h2>
+    <div class="product-detail-content">
+      <div class="product-image">
+        <img src="images/skincare1.jpg" alt="Product Image" id="product-img">
+      </div>
+      <div class="product-info">
+        <p id="product-price">Price: $50.00</p>
+        <p id="product-description">Detailed description of the product.</p>
+        <button class="btn-submit">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 Luxe. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('product');
+    const products = {
+      "hydrating-serum": {
+        name: "Hydrating Serum",
+        imgSrc: "images/skincare1.jpg",
+        price: "$50.00",
+        description: "Hydrating Serum is perfect for revitalizing dry skin and adding moisture for a smooth, glowing appearance. Ideal for daily use."
+      },
+      "anti-aging-cream": {
+        name: "Anti-Aging Cream",
+        imgSrc: "images/skincare2.jpg",
+        price: "$60.00",
+        description: "Anti-Aging Cream helps to smooth fine lines and wrinkles, restoring youthful skin vitality. Use nightly for optimal results."
+      },
+      "lipstick": {
+        name: "Lipstick",
+        imgSrc: "images/makeup1.jpg",
+        price: "$20.00",
+        description: "A luxurious lipstick that provides long-lasting color while keeping lips moisturized and soft."
+      }
+    };
+
+    if (products[productName]) {
+      document.getElementById("product-name").textContent = products[productName].name;
+      document.getElementById("product-img").src = products[productName].imgSrc;
+      document.getElementById("product-price").textContent = "Price: " + products[productName].price;
+      document.getElementById("product-description").textContent = products[productName].description;
+    } else {
+      document.getElementById("product-name").textContent = "Product Not Found";
+      document.getElementById("product-price").textContent = "";
+      document.getElementById("product-description").textContent = "Sorry, the product you're looking for does not exist.";
+    }
+  </script>
+</body>
+</html>

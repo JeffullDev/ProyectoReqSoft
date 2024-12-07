@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* General Styles */
+body {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6; /* Mejora la legibilidad general */
+}
+
+:root {
+  --bg-color: #fef6e4; /* Crema */
+  --text-color: #333333; /* Texto oscuro */
+  --primary-color: #f8a5b3; /* Durazno */
+  --secondary-color: #f5c6cb; /* Rosa suave */
+  --highlight-color: #f9d56e; /* Oro suave */
+  --accent-color: #a8d5ba; /* Menta clara */
+}
+
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --primary-color: #f8a5b3;
+  --secondary-color: #f5c6cb;
+  --highlight-color: #f9d56e;
+  --accent-color: #a8d5ba;
+}
+
+/* Navbar */
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--primary-color); /* Durazno */
+  color: #fff;
+}
+
+.logo {
+  grid-column: 1 / 2;
+}
+
+.menu-toggle {
+  grid-column: 3 / 4;
+  justify-self: end;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: none; /* Correcto para dispositivos móviles */
+  flex-flow: column nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.nav-links.show {
+  display: flex;
+}
+
+/* Theme Switcher */
+.theme-switcher {
+  cursor: pointer;
+  font-size: 18px; /* Tamaño coherente con el diseño */
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 40px 20px; /* Ajustado para mayor compatibilidad */
+  background-color: var(--secondary-color); /* Rosa suave */
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta {
+  background-color: var(--highlight-color); /* Oro suave */
+  color: #fff;
+  padding: 10px 20px; /* Botón más accesible */
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.cta:hover {
+  background-color: #f8b400; /* Un tono más fuerte de oro */
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px; /* Separación de la imagen */
+}
+
+/* Products */
+.products {
+  padding: 20px;
+}
+
+.product-category {
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.product-card {
+  padding: 15px; /* Más espacio interno */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Bordes redondeados */
+  text-align: center;
+  transition: transform 0.3s ease; /* Animación para hover */
+  background-color: var(--secondary-color); /* Rosa suave */
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  border-radius: 4px; /* Redondeo de imágenes */
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--primary-color); /* Durazno */
+  color: #fff;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: var(--secondary-color); /* Rosa suave */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color); /* Durazno */
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease; /* Transición para mejor feedback */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--highlight-color); /* Oro suave */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: var(--highlight-color); /* Oro suave */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #f8b400; /* Un tono más fuerte de oro */
+}
+
+  
+  /* Responsive Styles */
+  
+  /* For tablets and larger screens */
+  @media (min-width: 768px) {
+    .navbar {
+      grid-template-columns: auto 1fr auto;
+    }
+  
+    .nav-links {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+  
+    .menu-toggle {
+      display: none;
+    }
+  
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px;
+    }
+  
+    .hero-content {
+      text-align: left;
+      max-width: 50%;
+    }
+  
+    .hero-image {
+      max-width: 40%;
+    }
+  
+    .products {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  
+    .footer p {
+      flex: 1;
+      text-align: right;
+    }
+  }
+  
